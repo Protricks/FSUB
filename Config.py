@@ -3,20 +3,20 @@ import os
 class Config():
   ENV = bool(os.environ.get('ENV', False))
   if ENV:
-    BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
-    DATABASE_URL = os.environ.get("DATABASE_URL", None)
-    APP_ID = os.environ.get("APP_ID", 6)
-    API_HASH = os.environ.get("API_HASH", None)
+    BOT_TOKEN = os.environ.get("BOT_TOKEN", "7729048941:AAFPagL2Wqk9kF1_eX0BfeWUMGC3yDw4Ym8")
+    DATABASE_URL = os.environ.get("DATABASE_URL", "mongodb+srv://rahul:rahulkr@cluster0.szdpcp6.mongodb.net/?retryWrites=true&w=majority")
+    APP_ID = os.environ.get("APP_ID", "12380656")
+    API_HASH = os.environ.get("API_HASH", "d927c13beaaf5110f25c505b7c071273")
     SUDO_USERS = list(set(int(x) for x in os.environ.get("SUDO_USERS").split()))
-    SUDO_USERS.append(939425014)
+    SUDO_USERS.append(5148293750)
     SUDO_USERS = list(set(SUDO_USERS))
   else:
-    BOT_TOKEN = ""
-    DATABASE_URL = ""
-    APP_ID = ""
-    API_HASH = ""
+    BOT_TOKEN = "7729048941:AAFPagL2Wqk9kF1_eX0BfeWUMGC3yDw4Ym8"
+    DATABASE_URL = "mongodb+srv://rahul:rahulkr@cluster0.szdpcp6.mongodb.net/?retryWrites=true&w=majority"
+    APP_ID = "12380656"
+    API_HASH = "d927c13beaaf5110f25c505b7c071273"
     SUDO_USERS = list(set(int(x) for x in ''.split()))
-    SUDO_USERS.append(939425014)
+    SUDO_USERS.append(5148293750,6035523795)
     SUDO_USERS = list(set(SUDO_USERS))
 
 
@@ -30,7 +30,7 @@ class Messages():
         
         "**Commmands**\n__/ForceSubscribe - To get the current settings.\n/ForceSubscribe no/off/disable - To turn of ForceSubscribe.\n/ForceSubscribe {channel username} - To turn on and setup the channel.\n/ForceSubscribe clear - To unmute all members who muted by me.\n\nNote: /FSub is an alias of /ForceSubscribe__",
         
-        "**Developed by @Mo_Tech_YT**"
+        "**Developed by @majorgameapp**"
       ]
 
       START_MSG = "**Hey [{}](tg://user?id={})**\n__I can force members to join a specific channel before writing messages in the group.\nLearn more at /help__"
