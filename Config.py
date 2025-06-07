@@ -16,7 +16,8 @@ class Config():
     APP_ID = "12380656"
     API_HASH = "d927c13beaaf5110f25c505b7c071273"
     SUDO_USERS = list(set(int(x) for x in ''.split()))
-    SUDO_USERS.append(5148293750,6035523795)
+    SUDO_USERS.append(5148293750)
+    SUDO_USERS.append(6035523795)
     SUDO_USERS = list(set(SUDO_USERS))
 
 
