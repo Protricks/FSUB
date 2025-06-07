@@ -1,21 +1,17 @@
+# mongo_helpers.py (updated setup)
+
 import os
-from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker, scoped_session
-from Config import Config
+from motor.motor_asyncio import AsyncIOMotorClient
+from Config import Config  # assuming Config has MONGO_URL or DATABASE_URL
 
-
-def start() -> scoped_session:
-    engine = create_engine(Config.DATABASE_URL)
-    BASE.metadata.bind = engine
-    BASE.metadata.create_all(engine)
-    return scoped_session(sessionmaker(bind=engine, autoflush=False))
-
+MONGO_URL = getattr(Config, "MONGO_URL", None) or os.getenv("MONGO_URL") or "mongodb+srv://EXONTESTMONGO:EXONTESTMONGO@cluster0.bviw7ic.mongodb.net/?retryWrites=true&w=majority"
 
 try:
-    BASE = declarative_base()
-    SESSION = start()
-except AttributeError as e:
-    # this is a dirty way for the work-around required for #23
-    print("DATABASE_URL is not configured. Features depending on the database might have issues.")
+    client = AsyncIOMotorClient(MONGO_URL)
+    db = client["PurviMusicDB"]  # use your DB name here or from Config if you want
+
+except Exception as e:
+    print("MongoDB connection failed. Features depending on the database might have issues.")
     print(str(e))
+    client = None
+    db = None
